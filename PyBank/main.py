@@ -31,8 +31,16 @@ with open(csvpath) as csvfile:
 # Counting the rows
     data = list(csvreader)
     rowcount = len(data)
-    totalMonthsLabel = 'Total Months: '
-    print(totalMonthsLabel + str(rowcount))
+    print(f"Total Months:  {rowcount}")
+    
+    totalProfitLosses = sum(row[2]for row in csvreader)
+    print(f"Total: {totalProfitLosses}")
+
+    # profitValues = (float(row[2])for row in csvreader)
+    # totalProftLosses = sum(profitValues)
+    # print(totalProftLosses)
+
+
     
 
 
