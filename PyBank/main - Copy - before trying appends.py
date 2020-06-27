@@ -7,26 +7,15 @@ py_bank_csv = os.path.join('py_bank.csv')
 
 months =[]
 monthlyChange = []
-profitLosses =[]
+totalProfit =[]
 
 with open(py_bank_csv) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     csv_header = next(csvreader)
 
-
-# Finding the number of Months and the total "Profits/Losses"
     for row in csvreader:
         months.append(row[0])
-        profitLosses.append(int(row[1]))
-
-# Finding the average changes in "Profits/Losses" by monthly change(?)
-
-    for row in csvreader:
-        
-
-
-
-
+        totalProfit.append(int(row[1]))
 
 #Counting the rows
     # monthData = list(csvreader)
@@ -34,19 +23,19 @@ with open(py_bank_csv) as csvfile:
     #rowcount = sum(1 for row in csvreader)
 
     # Calculating the net total amount of "Profit/Losses"
-    # money = 0
-    # profitSum = 0
-    # lossSum = 0
-    # totalProfitLosses = 0
+    money = 0
+    profitSum = 0
+    lossSum = 0
+    totalProfitLosses = 0
     
-    # for row in csvreader:
-    #     money = int(row[1])
-    #     if money > 0:
-    #         profitSum += money
-    #     elif money < 0:
-    #         lossSum += money
+    for row in csvreader:
+        money = int(row[1])
+        if money > 0:
+            profitSum += money
+        elif money < 0:
+            lossSum += money
 
-    # totalProfitLosses = profitSum + lossSum
+    totalProfitLosses = profitSum + lossSum
 
 
 #Finding Monthly Change
@@ -60,8 +49,8 @@ print()
 print("Financial Analysis")
 print("----------------------------")
 print(f"Total Months:  {len(months)}")
-print(f"Total: ${sum(profitLosses)}")
-print("Monthly Change: $")
+print(f"Total: ${sum(totalProfit)}")
+#print(f"Monthly Change:  {monthlyChange}")
 
 
     
