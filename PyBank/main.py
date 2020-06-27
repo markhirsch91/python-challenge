@@ -18,13 +18,34 @@ with open(py_bank_csv) as csvfile:
     for row in csvreader:
         months.append(row[0])
         profitLosses.append(int(row[1]))
+        
+        #monthlychange = sum(profitLosses) / months
+
+
+# Setting up monthly change (final calculations in the "print" sections)
+    for x in range(len(profitLosses)-1):
+        monthlyChange.append(profitLosses[x+1] - profitLosses[x])
+        averageMonthlyChange = round((sum(monthlyChange)/len(monthlyChange)))
+        maxMonthlyChange = max(monthlyChange)
+        minMonthlyChange = min(monthlyChange)
 
 # Finding the average changes in "Profits/Losses" by monthly change(?)
 
-    for row in csvreader:
-        
+    #for row in csvreader:
 
 
+#Printing and including the final calculations in the print
+
+print()
+print()
+print("Financial Analysis")
+print("----------------------------")
+print(f"Total Months:  {len(months)}")
+print(f"Total: ${sum(profitLosses)}")
+#print(f"Monthly Change: $ {sum(monthlyChange)/len(monthlyChange)}")
+print(f"Average Change: $ {averageMonthlyChange}")
+print(f"Greatest Increase in Profits: (${maxMonthlyChange} ")
+print(f"Greatest Decrease in Profits: (${minMonthlyChange}) ")
 
 
 
@@ -56,12 +77,7 @@ with open(py_bank_csv) as csvfile:
 
 
 
-print()
-print("Financial Analysis")
-print("----------------------------")
-print(f"Total Months:  {len(months)}")
-print(f"Total: ${sum(profitLosses)}")
-print("Monthly Change: $")
+
 
 
     
