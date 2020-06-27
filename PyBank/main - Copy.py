@@ -1,61 +1,41 @@
 import os
 import csv
 
-# Path for the PyBank CSV file
-py_bank_csv = os.path.join('py_bank.csv')
+# # Path for the PyBank CSV file
+csvpath = os.path.join('py_bank.csv')
 
 
-with open(py_bank_csv) as csvfile:
-     # CSV reader specifies delimiter and variable that holds contents
+
+# # Method 1: Plain Reading of CSV files
+# with open(csvpath, 'r') as file_handler:
+#     lines = file_handler.read()
+#     print(lines)
+#     print(type(lines))
+
+
+
+
+with open(csvpath) as csvfile:
+
+    title = "Financial Analysis"
+    print(title)
+    seperator = "----------------------------"
+    print(seperator)
+
+
+    # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
     csv_header = next(csvreader)
+    #print(csvreader)
 
-    # for row in csvreader:
-        
-    #     print(row[1])
+# Finding the number of months by counting the rows
+    data = list(csvreader)
+    rowcount = len(data)
+    print(f"Total Months:  {rowcount}")
 
-    # Calculating the net total amount of "Profit/Losses"
-    money = 0
-    profitSum = 0
-    lossSum = 0
-    totalProfitLosses = 0
-    
-    for row in csvreader:
-        money = int(row[1])
-        if money > 0:
-            profitSum += money
-        elif money < 0:
-            lossSum += money
-    totalProfitLosses = profitSum + lossSum
-
-    
-
-
-    #Counting the rows
-    # monthData = list(csvreader)
-    # rowcount = len(monthData)
-    rowcount = sum(1 for row in csvreader)
-    
-
-
-
-print()
-print("Financial Analysis")
-print("----------------------------")
-print(f"Total Months:  {rowcount}")
-print(f"Total: ${totalProfitLosses}")
-    
-
-
-
-
-    
-
-
-
-
-
-
+    # csv_reader = csv.reader(csv_file, delimiter=',')
+    for lines in csvreader:
+        print(f"Profits: {lines[0]}")
 
 
     
@@ -104,4 +84,5 @@ print(f"Total: ${totalProfitLosses}")
 
     # print(dates)
     # print(profits)
+
 
