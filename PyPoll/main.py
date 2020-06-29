@@ -1,6 +1,9 @@
 import os
 import csv
 
+
+
+
 # Path for the PyBank CSV file
 py_poll_csv = os.path.join('py_poll.csv')
 
@@ -10,6 +13,7 @@ voterID =[]
 candidates = []
 totalVotesCount= []
 ontooleyChangeList = []
+#name = "O'Tooley"
 
 with open(py_poll_csv) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -20,35 +24,22 @@ with open(py_poll_csv) as csvfile:
     for row in csvreader:
         totalVotesCount.append(row[0])
         totalVotesNumber = len(totalVotesCount)
-        candidates.append(str(row[2]))
-        #khanPercent = candidates.count('Khan')/totalVotesNumber
-        #khanCount = candidates.count('Khan')
-        #print(f"Khan: {khanCount}")
-        otooleyCount = round((candidates.count('O\'Tooley')/totalVotesNumber)*100)
+        candidates.append(str(row[2]))    
+    # your current list of candidates can be converted to a set which only hold unique values, then back to a list to make it easier to work with
+    uniqueCandidates = list(set(candidates))
+    # using this, you can loop through the data and print results like so
+    
+    print()
+    print("Election Results")
+    print("-------------------------")
+    print(f"Total Votes:  {totalVotesNumber}")
+    print("-------------------------")
+    
+    
+    for candidate in uniqueCandidates:
+        print(f"{candidate}: {round((candidates.count(candidate)/totalVotesNumber)*100)}% ({candidates.count(candidate)})")
         
-
-    khanCount = candidates.count('Khan')
-        
-
-
-print()
-print("Election Results")
-print("-------------------------")
-print(f"Total Votes:  {totalVotesNumber}")
-print("-------------------------")
-
-
-
-#print(f"Khan: {round((candidates.count('Khan')/totalVotesNumber)*100)}% ({candidates.count('Khan')})")
-print(khanCount)
-#print(f"Correy: {round((candidates.count('Correy')/totalVotesNumber)*100)}% ({candidates.count('Correy')})")
-#print(f"Li: {round((candidates.count('Li')/totalVotesNumber)*100)}% ({candidates.count('Li')})")
-#print(otooleyCount)
-#print(f"O'Tooley: {round((candidates.count('O\'Tooley')/totalVotesNumber)*100)}% ({candidates.count('O\'Tooley')})")
-print("-------------------------")
-print("Winner: ")
-print("-------------------------")
-
-
-
-
+    print("-------------------------")
+    #print(f"Winner: {max(int(candidates.count(candidate))} ")
+    print(f"Winner: {max(set(candidates), key=candidates.count)}")
+    print("-------------------------")    
