@@ -43,9 +43,3 @@ with open(py_poll_csv) as csvfile:
     #print(f"Winner: {max(int(candidates.count(candidate))} ")
     print(f"Winner: {max(set(candidates), key=candidates.count)}")
     print("-------------------------")    
-
-
-
-
-
-
