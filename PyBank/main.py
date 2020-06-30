@@ -62,6 +62,9 @@ print(f"Average Change: $ {roundedAverageMonthlyChange}")
 print(f"Greatest Increase in Profits: {maxMonthlyChangeLabel} (${maxMonthlyChange}) ")
 print(f"Greatest Decrease in Profits: {minMonthlyChangeLabel} (${minMonthlyChange}) ")
 
+
+
+# Exporting the Financial Analysis to pybankoutput.txt - located in analysis/pybankoutput.txt
 pybankOutput.write("Financial Analysis\n")
 pybankOutput.write("----------------------------\n")
 pybankOutput.write(f"Total Months:  {totalMonths}\n")

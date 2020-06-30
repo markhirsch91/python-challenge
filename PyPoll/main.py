@@ -1,19 +1,16 @@
 import os
 import csv
 
-
-
-
 # Path for the PyBank CSV file
 py_poll_csv = os.path.join('py_poll.csv')
+pypollOutput = open('pypolloutput.txt', 'w')
 
 
-#Empty Lists
+# Turning the columns from the CSV file into lists in order to properly make calculations.
 voterID =[]
 candidates = []
 totalVotesCount= []
 ontooleyChangeList = []
-#name = "O'Tooley"
 
 with open(py_poll_csv) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -25,9 +22,9 @@ with open(py_poll_csv) as csvfile:
         totalVotesCount.append(row[0])
         totalVotesNumber = len(totalVotesCount)
         candidates.append(str(row[2]))    
-    # your current list of candidates can be converted to a set which only hold unique values, then back to a list to make it easier to work with
+    # Converting candidates to a set that will hold only unique values, the back to a list once again
     uniqueCandidates = list(set(candidates))
-    # using this, you can loop through the data and print results like so
+
     
     print()
     print("Election Results")
@@ -40,6 +37,17 @@ with open(py_poll_csv) as csvfile:
         print(f"{candidate}: {round((candidates.count(candidate)/totalVotesNumber)*100)}% ({candidates.count(candidate)})")
         
     print("-------------------------")
-    #print(f"Winner: {max(int(candidates.count(candidate))} ")
     print(f"Winner: {max(set(candidates), key=candidates.count)}")
-    print("-------------------------")    
+    print("-------------------------")
+
+
+
+# Exporting the Financial Analysis to pypolloutput.txt - located in analysis/pypolloutput.txt
+pypollOutput.write("Election Results\n")
+pypollOutput.write("-------------------------\n")
+pypollOutput.write(f"Total Votes:  {totalVotesNumber}\n")
+pypollOutput.write("-------------------------\n")
+pypollOutput.write(f"{candidate}: {round((candidates.count(candidate)/totalVotesNumber)*100)}% ({candidates.count(candidate)})\n")
+pypollOutput.write("-------------------------\n")
+pypollOutput.write(f"Winner: {max(set(candidates), key=candidates.count)}\n")
+pypollOutput.write("-------------------------\n")
