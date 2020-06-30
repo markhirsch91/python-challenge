@@ -2,8 +2,9 @@ import os
 import csv
 
 # Path for the PyBank CSV file
-py_poll_csv = os.path.join('py_poll.csv')
-pypollOutput = open('pypolloutput.txt', 'w')
+py_poll_csv = os.path.join('Resources','py_poll.csv')
+py_poll_txt = os.path.join('analysis','pypolloutput.txt')
+pypollOutput = open(py_poll_txt, 'w')
 
 
 # Turning the columns from the CSV file into lists in order to properly make calculations.
@@ -51,3 +52,6 @@ pypollOutput.write(f"{candidate}: {round((candidates.count(candidate)/totalVotes
 pypollOutput.write("-------------------------\n")
 pypollOutput.write(f"Winner: {max(set(candidates), key=candidates.count)}\n")
 pypollOutput.write("-------------------------\n")
+
+
+pypollOutput.close()

@@ -2,8 +2,9 @@ import os
 import csv
 
 # Path to the PyBank CSV file
-py_bank_csv = os.path.join('py_bank.csv')
-pybankOutput = open('pybankoutput.txt', 'w')
+py_bank_csv = os.path.join('Resources','py_bank.csv')
+py_bank_txt = os.path.join('analysis','pybankoutput.txt')
+pybankOutput = open(py_bank_txt, 'w')
 
 #Printing out the title and seperation line. Top two print() commands are there just for a cleaner look in the terminal
 print()
@@ -65,6 +66,7 @@ print(f"Greatest Decrease in Profits: {minMonthlyChangeLabel} (${minMonthlyChang
 
 
 # Exporting the Financial Analysis to pybankoutput.txt - located in analysis/pybankoutput.txt
+# using "\n" to create a new line for each print value in the text file
 pybankOutput.write("Financial Analysis\n")
 pybankOutput.write("----------------------------\n")
 pybankOutput.write(f"Total Months:  {totalMonths}\n")
@@ -74,7 +76,7 @@ pybankOutput.write(f"Greatest Increase in Profits: {maxMonthlyChangeLabel} (${ma
 pybankOutput.write(f"Greatest Decrease in Profits: {minMonthlyChangeLabel} (${minMonthlyChange})\n")
 
 
-
+pybankOutput.close()
 
     
 
